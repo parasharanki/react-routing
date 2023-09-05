@@ -1,12 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 
-function SingleBlog() {
+
+function SingleBlogDyn() {
   const[showData,setShowData] = useState({});
+  const dynamicNumber =useParams();
   useEffect(( )=>{
      async function fetchApi(){
-    const output= await axios.get("https://jsonplaceholder.typicode.com/posts/5")
+    const output= await axios.get("https://jsonplaceholder.typicode.com/posts/"+dynamicNumber.id)
     setShowData(output.data)
     console.log(output);
   }
@@ -22,4 +25,4 @@ function SingleBlog() {
   )
 }
 
-export default SingleBlog
+export default SingleBlogDyn
